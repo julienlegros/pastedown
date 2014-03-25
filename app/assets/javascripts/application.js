@@ -16,6 +16,5 @@
 //= require angular
 //= require angular-sanitize
 //= require highlightjs/highlight.pack.js
-//= require marked
 //= require turbolinks
 //= require_tree .
