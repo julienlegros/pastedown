@@ -12,5 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap
+//= require angular
+//= require angular-sanitize
+//= require highlightjs/highlight.pack.js
+//= require marked
 //= require turbolinks
 //= require_tree .

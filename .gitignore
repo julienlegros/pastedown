@@ -14,3 +14,12 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+# assets
+public/assets/**
+
+# bower components
+vendor/assets/components
+
+# unicorn config
+config/unicorn.rb

@@ -1,0 +1,22 @@
+{
+  "name": "pastedown",
+  "version": "0.0.0",
+  "authors": [
+    "Julien Legros <julien.jay@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor/assets/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.14",
+    "angular-sanitize": "~1.2.14",
+    "font-awesome": "~4.0.3"
+  }
+}

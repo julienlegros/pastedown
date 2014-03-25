@@ -1,3 +1,5 @@
 <% @pastes.each do |paste| %>
-  <p><%= paste.title %></p>
+  <p>
+    <%= link_to "#{paste.title}", paste %>
+  </p>
 <% end %>
