@@ -1,10 +1,25 @@
-
-<h2>
-  <%= @paste.title %>
-</h2>
+<div class="row">
+  <div class="col-md-8">
+    <div class="page-header">
+      <h2><%= @paste.title %></h2>
+    </div>
+  </div>
+</div>
 
 <div class="row">
-  <div class="col-md-8 col-md-offset-2">
+  <div class="col-md-8">
+    <div class="pull-right">
+      <ul class="list-inline">
+        <li><a href="#" class="btn btn-default">URL</a></li>
+        <li><a href="#" class="btn btn-default">RAW</a></li>
+        <li><a href="#" class="btn btn-default">RE</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-8">
     <div class="<%= @typo_class %>">
       <%= raw @markdown_html %>
     </div>

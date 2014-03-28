@@ -1,5 +1,29 @@
-<% @pastes.each do |paste| %>
-  <p>
-    <%= link_to "#{paste.title}", paste %>
-  </p>
-<% end %>
+<div class="row">
+  <div class="col-md-8">
+
+    <%= paginate @pastes, :window => 2%>
+
+    <% @pastes.each_index do |i| %>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <%= link_to "View all", @pastes[i] %>
+          <div class="pull-right">
+            <%= @pastes[i].title %>
+            <span class="text-muted"></span>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class="<%= @typo_class %>">
+            <%= raw @pastes_html[i]["output"] %>
+            <% if @pastes[i].truncated == true %>
+              <p>[...]</p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <%= paginate @pastes, :window => 2%>
+
+  </div>
+</div>

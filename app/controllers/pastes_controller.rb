@@ -1,6 +1,21 @@
 class PastesController < ApplicationController
   def index
-    @pastes = Paste.all
+    @pastes = Paste.order(created_at: :desc).page params[:page]
+
+    # truncate
+    @pastes.each do |paste|
+      limit = 250
+      if paste.body.length > limit
+        paste.truncated = true
+      else
+        paste.truncated = false
+      end
+      paste.body = paste.body.slice(0, limit)
+    end
+
+    response = markdown_http_request @pastes
+    @pastes_html = JSON.parse(response.body)["array"]
+    @typo_class = 'foghorn'
   end
 
   def new
@@ -19,7 +34,7 @@ class PastesController < ApplicationController
   def show
     @paste = Paste.find(params[:id])
 
-    to_markdown
+    single_markdown_to_html
 
     @typo_class = 'foghorn'
   end
@@ -27,24 +42,27 @@ class PastesController < ApplicationController
   def preview
     @paste = Paste.new(paste_params)
 
-    to_markdown
+    single_markdown_to_html
 
     render json: { :output => @markdown_html }
   end
 
   private
     def paste_params
-      params.require(:paste).permit(:title, :body)
+      params.require(:paste).permit(:title, :body, :gfm)
     end
 
-    def to_markdown
-      uri = URI('http://localhost:3000/api/markdown')
+    def single_markdown_to_html
+      response = markdown_http_request @paste
+      @markdown_html = JSON.parse(response.body)["array"][0]["output"]
+    end
 
+    def markdown_http_request (body)
+      uri = URI('http://localhost:3000/api/markdown')
       http = Net::HTTP.new(uri.host, uri.port)
       request = Net::HTTP::Post.new(uri.path, {'Content-Type' => 'application/json'})
-      request.body = @paste.to_json
 
+      request.body = body.to_json
       response = http.request(request)
-      @markdown_html = JSON.parse(response.body)["output"]
     end
 end

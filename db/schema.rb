@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140303112534) do
+ActiveRecord::Schema.define(version: 20140327150304) do
 
   create_table "pastes", force: true do |t|
     t.string   "title"
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "gfm",        default: true, null: false
   end
 
 end
