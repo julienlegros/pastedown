@@ -2,8 +2,11 @@ Pastedown::Application.routes.draw do
 
   root to: "home#index"
 
-  resources :pastes, only: [:index, :new, :create, :show]
-  post 'pastes/preview'
+  resources :pastes, only: [:index, :new, :create, :show] do
+    get 'raw', on: :member
+    get 'repaste', on: :member
+    post 'preview', on: :new
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

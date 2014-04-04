@@ -34,9 +34,14 @@ class PastesController < ApplicationController
   def show
     @paste = Paste.find(params[:id])
 
-    single_markdown_to_html
+    respond_to do |format|
+      format.html do
+        single_markdown_to_html
+        @typo_class = 'foghorn'
+      end
+      format.json  { render :json => @paste }
+    end
 
-    @typo_class = 'foghorn'
   end
 
   def preview
@@ -45,6 +50,19 @@ class PastesController < ApplicationController
     single_markdown_to_html
 
     render json: { :output => @markdown_html }
+  end
+
+  def raw
+    @paste = Paste.find(params[:id])
+
+    render layout: "raw_layout"
+  end
+
+  def repaste
+    @paste = Paste.find(params[:id])
+    @paste = Paste.new(@paste.attributes)
+
+    render "home/index"
   end
 
   private

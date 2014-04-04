@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-8">
+  <div class="col-md-9">
     <div class="page-header">
       <h2><%= @paste.title %></h2>
     </div>
@@ -7,19 +7,24 @@
 </div>
 
 <div class="row">
-  <div class="col-md-8">
+  <div class="col-md-9">
     <div class="pull-right">
-      <ul class="list-inline">
-        <li><a href="#" class="btn btn-default">URL</a></li>
-        <li><a href="#" class="btn btn-default">RAW</a></li>
-        <li><a href="#" class="btn btn-default">RE</a></li>
-      </ul>
+      <div class="paste-buttons btn-group">
+        <!--div class="input-group">
+          <input type="text" class="form-control raw-url" readonly="readonly" value="<%= paste_url %>">
+          <span class="input-group-btn">
+          <button class="btn btn-default js-tooltip" type="button" data-toggle="tooltip" data-placement="top" title="Copy to clipboard"><span class="fa fa-clipboard"></span></button>
+          </span>
+        </div-->
+        <a href="<%= repaste_paste_path(@paste) %>" class="btn btn-default"><span class="fa fa-retweet"></span> Repaste</a>
+        <a href="<%= raw_paste_path(@paste) %>" class="btn btn-default"><span class="fa fa-code"></span> Raw</a>
+      </div>
     </div>
   </div>
 </div>
 
 <div class="row">
-  <div class="col-md-8">
+  <div class="col-md-9">
     <div class="<%= @typo_class %>">
       <%= raw @markdown_html %>
     </div>

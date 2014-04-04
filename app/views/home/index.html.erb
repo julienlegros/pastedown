@@ -1,6 +1,6 @@
 <div class="row" ng-controller="editorCtrl">
   <div ng-show="editMode" class="col-xs-12 col-sm-9 col-md-9">
-    <%= form_for @paste, url: {action: "create", controller:"pastes"}, html: {role: "form"} do |f| %>
+    <%= form_for @paste, url: {action: "create", controller: "pastes"}, html: {role: "form"} do |f| %>
       <% if @paste.errors.any? %>
         <div id="error_explanation">
           <% @paste.errors.full_messages.each do |msg| %>
@@ -9,17 +9,17 @@
         </div>
       <% end %>
 
-      <div >
+      <div>
         <h2>New pastedown</h2>
         <div class="form-group">
           <%#= f.label :body, "Text" %>
-          <%= f.text_area :body, :id => "md", :rows=> 12, "ng-model"=> "mdText" %>
+          <%= f.text_area :body, :rows=> 15, :id => "md", "ng-class"=> "mdClass","ng-model"=> "mdText" %>
         </div>
 
         <h2>Options</h2>
         <div class="form-group">
           <%= f.label :title, "Title" %>
-          <%= f.text_field :title %>
+          <%= f.text_field :title, "placeholder"=> "Title here" %>
         </div>
 
         <div class="checkbox">

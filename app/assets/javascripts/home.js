@@ -2,6 +2,7 @@ var app = angular.module('pastedown', ['ngSanitize']);
 
 app.run(function(){
   hljs.initHighlightingOnLoad();
+  $(".js-tooltip").tooltip();
 });
 
 app.config(['$provide', function(provide){
@@ -16,7 +17,7 @@ app.config(['$provide', function(provide){
         }
         var deferred = $q.defer();
         var postData = {title: "preview", body: input};
-        $http.post('/pastes/preview', postData).success(function(data){
+        $http.post('/pastes/new/preview', postData).success(function(data){
           self.output = data.output;
           deferred.resolve();
         });
@@ -41,8 +42,22 @@ app.directive('preview', function(){
   };
 });
 
-app.controller('editorCtrl', ['$scope', '$timeout', 'md', function($scope, $timeout, md){
+app.controller('editorCtrl', ['$http', '$scope', '$window', '$timeout', 'md', function($http, $scope, $window, $timeout, md){
   $scope.editMode = true;
+
+  var path = $window.location.pathname;
+  var regex = /^\/pastes\/(.*)\/.*/;
+
+  if (regex.test(path)) {
+    var resArray = regex.exec(path);
+    var id = resArray[1];
+
+    $http.get("/pastes/" + id + ".json").success(function(data){
+      $scope.mdText = data.body;
+    });
+  } else {
+    $scope.mdClass = "empty";
+  }
 
   $scope.preview = function(){
     var promise = md.preview($scope.mdText);
@@ -62,8 +77,10 @@ app.controller('editorCtrl', ['$scope', '$timeout', 'md', function($scope, $time
   $scope.$watch('mdText', function(value){
     if (typeof(value) == "undefined" || value == ""){
       $scope.previewDisable = true;
+      $scope.mdClass = "empty";
     } else {
       $scope.previewDisable = false;
+      $scope.mdClass = "";
     }
   });
 }]);

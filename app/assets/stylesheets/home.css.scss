@@ -2,6 +2,31 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#md {
+body {
+  background-color: #fafafa;
+}
+
+nav.navbar-static-top {
+  background-color: #1b3050;
+  box-shadow: 0px 5px 5px 0px rgba(0,0,0,.2);
+
+  .navbar-brand {
+    color: #dedede;
+  }
+
+  .navbar-nav li a {
+    color: #dedede;
+  }
+}
+
+textarea#md {
   resize: vertical;
+
+  &.empty {
+    //https://github.com/dcurtis/markdown-mark
+    //#777
+    background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgd2lkdGg9IjEwNCIgaGVpZ2h0PSI2NCIgdmlld0JveD0iMCAwIDIwOCAxMjgiPg0KCTxyZWN0IHN0eWxlPSJmaWxsOm5vbmU7c3Ryb2tlOiM3Nzc7c3Ryb2tlLXdpZHRoOjEwIiB3aWR0aD0iMTk4IiBoZWlnaHQ9IjExOCIgeD0iNSIgeT0iNSIgcnk9IjEwIiAvPg0KCTxwYXRoIHN0eWxlPSJmaWxsOiM3NzciIGQ9Im0gMzAsOTggMCwtNjggMjAsMCAyMCwyNSAyMCwtMjUgMjAsMCAwLDY4IC0yMCwwIDAsLTM5IC0yMCwyNSAtMjAsLTI1IDAsMzkgeiIgLz4NCgk8cGF0aCBzdHlsZT0iZmlsbDojNzc3IiBkPSJtIDE1NSw5OCAtMzAsLTMzIDIwLDAgMCwtMzUgMjAsMCAwLDM1IDIwLDAgeiIgLz4NCjwvc3ZnPg==");
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
 }
