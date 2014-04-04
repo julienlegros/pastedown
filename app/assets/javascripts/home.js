@@ -65,6 +65,7 @@ app.controller('editorCtrl', ['$http', '$scope', '$window', '$timeout', 'md', fu
       $scope.editMode = false;
       $timeout(function(){
         $('pre code').each(function(i, e) {hljs.highlightBlock(e)});
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
       }, 1);
     });
   };
