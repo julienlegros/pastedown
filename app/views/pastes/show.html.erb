@@ -8,16 +8,24 @@
 
 <div class="row">
   <div class="col-md-9">
-    <div class="pull-right">
-      <div class="paste-buttons btn-group">
-        <!--div class="input-group">
-          <input type="text" class="form-control raw-url" readonly="readonly" value="<%= paste_url %>">
-          <span class="input-group-btn">
-          <button class="btn btn-default js-tooltip" type="button" data-toggle="tooltip" data-placement="top" title="Copy to clipboard"><span class="fa fa-clipboard"></span></button>
-          </span>
-        </div-->
-        <a href="<%= repaste_paste_path(@paste) %>" class="btn btn-default"><span class="fa fa-retweet"></span> Repaste</a>
-        <a href="<%= raw_paste_path(@paste) %>" class="btn btn-default"><span class="fa fa-code"></span> Raw</a>
+    <div class="row">
+      <div class="col-md-9">
+        <div class="fb-like" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false" data-width="90"></div>
+        <div class="fb-share-button" data-type="button_count" data-width="90"></div>
+        <div class="g-plusone" data-size="medium"></div>
+        <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+      </div>
+      <div class="col-md-3 pull-right">
+        <div class="paste-buttons btn-group">
+          <!--div class="input-group">
+            <input type="text" class="form-control raw-url" readonly="readonly" value="<%= paste_url %>">
+            <span class="input-group-btn">
+            <button class="btn btn-default js-tooltip" type="button" data-toggle="tooltip" data-placement="top" title="Copy to clipboard"><span class="fa fa-clipboard"></span></button>
+            </span>
+          </div-->
+          <a href="<%= repaste_paste_path(@paste) %>" class="btn btn-default"><span class="fa fa-retweet"></span> Repaste</a>
+          <a href="<%= raw_paste_path(@paste) %>" class="btn btn-default"><span class="fa fa-code"></span> Raw</a>
+        </div>
       </div>
     </div>
   </div>
