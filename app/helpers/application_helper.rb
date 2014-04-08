@@ -1,5 +1,9 @@
 module ApplicationHelper
 
+  def title(page_title)
+    content_for :title, page_title.to_s
+  end
+
   module BootstrapExtension
     FORM_CONTROL_CLASS = "form-control"
 
